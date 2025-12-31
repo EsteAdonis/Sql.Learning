@@ -24,3 +24,20 @@ Select SalesOrderId,  OrderDate, Row#
 From	OrderdOrders 
 Where	Row# Between 50 and 60;
 
+-- CTE Recursiva
+-- Step 1: Create the view with schemabinding
+CREATE VIEW dbo.vwProductSales
+WITH SCHEMABINDING
+AS
+SELECT 
+    od.ProductID,
+    SUM(od.Quantity) AS TotalQty,
+    COUNT_BIG(*) AS RowCount
+FROM dbo.Orders o
+INNER JOIN dbo.OrderDetails od
+    ON o.OrderID = od.OrderID
+GROUP BY od.ProductID;
+
+-- Step 2: Create a unique clustered index on the view
+CREATE UNIQUE CLUSTERED INDEX IX_vwProductSales
+ON dbo.vwProductSales(ProductID);

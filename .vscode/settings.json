@@ -8,7 +8,7 @@
   "editor.fontSize": 16,
   "editor.fontFamily": "Consolas, 'Courier New', monospace",
   "editor.codeLens": false,	
-  "editor.hover.enabled": true,	
+  "editor.hover.enabled": "on",	
   "editor.hover.sticky": true,
 	"editor.cursorBlinking": "expand",
   "editor.mouseWheelZoom": true,
